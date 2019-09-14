@@ -1,7 +1,7 @@
 # Личный проект «Кексобукинг» [![Build status][travis-image]][travis-url]
 
 * Студент: [Анна Волк](https://up.htmlacademy.ru/javascript/18/user/673595).
-* Наставник: `Неизвестно`.
+* Наставник: [Мария Филлипова](https://htmlacademy.ru/profile/js_ninja).
 
 ---
 
