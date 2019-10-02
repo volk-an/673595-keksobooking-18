@@ -29,7 +29,7 @@ var Y = {
 }
 var MAX_PRICE = 10000000;
 var ROOM_AMOUNT = 10;
-var GUEST_AMONT = 10;
+var GUEST_AMOUNT = 10;
 //функция создания массива л=объявлений
 var generateAdvertisements = function (advertisementAmount) {
   var advertisements = [];
@@ -46,7 +46,7 @@ var generateAdvertisements = function (advertisementAmount) {
         price: getRandomNumber(0, MAX_PRICE),
         type: getRandomElement(advertisementParms.TYPES),
         rooms: getRandomNumber(0, ROOM_AMOUNT),
-        guests: getRandomNumber(0, GUEST_AMONT),
+        guests: getRandomNumber(0, GUEST_AMOUNT),
         checkin: getRandomElement(advertisementParms.TIMES),
         checkout: getRandomElement(advertisementParms.TIMES),
         features: getRandomElement(advertisementParms.FEATURES),
@@ -59,8 +59,8 @@ var generateAdvertisements = function (advertisementAmount) {
     }
   };
   };
-
-console.log(advertisements);
+  console.log(advertisements)
+  return advertisements;
 };
 //активируем карту
 var map = document.querySelector('.map');
@@ -77,11 +77,11 @@ var renderPin = function () {
     var newPin = similarPinTemplate.cloneNode(true);
     newPin.querySelector('.map__pin').style.left = advert.location.x;
     newPin.querySelector('.map__pin').style.top = advert.location.y;
-    newPin.querySelector('img').src = advert.author.avatr;
-    newPin.querySelector('.img').alt = advert.offer.description;
+    newPin.querySelector('img').src = advert.author.avatar;
+    newPin.querySelector('img').alt = advert.offer.description;
     fragment.appendChild(newPin);
   });
   similarAdvertList.appendChild(fragment);
-}
-
+};
+renderPin()
 //generateAdvertisements(ADVERT_AMOUNT);
