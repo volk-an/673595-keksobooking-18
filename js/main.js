@@ -6,7 +6,7 @@ var advertisementParms = {
   TYPES: ['palace', 'flat', 'house', 'bungalo'],
   TIMES: ['12:00', '13:00', '14:00'],
   FEATURES: ['wifi', 'dishwasher', 'parking', 'washer', 'elevator', 'conditioner'],
-  DESCRIPTIONS: ['Уютная квартирка с ручными привидениями', 'осторожно! злая собака', 'постоянно топят соседи сверху, держите зонт наготове', 'Незабудьте кормить хозяйских драконов утром и вечером. Корм в холодильнике', 'парковочное место для вашего вертолета предоставляется бесплатно'], //строка с описанием,
+  DESCRIPTIONS: ['Уютная квартирка с ручными привидениями', 'осторожно! злая собака', 'постоянно топят соседи сверху, держите зонт наготове', 'Незабудьте кормить хозяйских драконов утром и вечером. Корм в холодильнике', 'парковочное место для вашего вертолета предоставляется бесплатно'],
   PHOTOS: ['http://o0.github.io/assets/images/tokyo/hotel1.jpg', 'http://o0.github.io/assets/images/tokyo/hotel2.jpg', 'http://o0.github.io/assets/images/tokyo/hotel3.jpg']
 };
 //  функция выбора элемента из массива
@@ -34,8 +34,8 @@ var GUEST_AMOUNT = 10;
 var generateAdvertisements = function (advertisementAmount) {
   var advertisements = [];
   for (var i = 0; i < advertisementAmount; i++) {
-    var coordX = getRandomNumber(xCoord.MIN, xCoord.MAX);
-    var coordY = getRandomNumber(yCoord.MIN, yCoord.MAX);
+    var coordX = getRandomNumber(xCoord.MIN, xCoord.MAX) + 25;
+    var coordY = getRandomNumber(yCoord.MIN, yCoord.MAX) + 70;
     advertisements[i] = {
       author: {
         avatar: getRandomElement(advertisementParms.AVATARS)
@@ -57,8 +57,8 @@ var generateAdvertisements = function (advertisementAmount) {
         x: coordX,
         y: coordY
       }
-
-  };
+    };
+  }
   return advertisements;
 };
 //  активируем карту
@@ -67,20 +67,19 @@ map.classList.remove('map--faded');
 //  определяем, куда вставлять новые пины
 var similarAdvertList = document.querySelector('.map__pins');
 //  определяем шаблон для пина
-var similarPinTemplate = document.querySelector('#pin').content .querySelector('.map__pin');;
-//  функция заполнения данными из сгенерированного массива по шаблону
+var similarPinTemplate = document.querySelector('#pin').content .querySelector('.map__pin');
+// функция заполнения данными из сгенерированного массива по шаблону
 var renderPins = function () {
   var fragment = document.createDocumentFragment();
   var adverts = generateAdvertisements(AMOUNT);
-    console.log(adverts)
-  adverts.forEach(function(advert) {
+  adverts.forEach(function (advert) {
     var newPin = similarPinTemplate.cloneNode(true);
-    newPin.style.left = advert.location.x;
-    newPin.style.top = advert.location.y;
+    newPin.style.left = advert.location.x + 'px';
+    newPin.style.top = advert.location.y + 'px';
     newPin.querySelector('img').src = advert.author.avatar;
     newPin.querySelector('img').alt = advert.offer.description;
     fragment.appendChild(newPin);
   });
   similarAdvertList.appendChild(fragment);
 };
-renderPins()
+renderPins();
