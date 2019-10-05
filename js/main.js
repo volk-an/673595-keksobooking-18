@@ -1,7 +1,6 @@
 'use strict';
 //  массмвы данных для создания массива объявлений
 var advertisementParms = {
-  AVATARS: ['img/avatars/user01.png', 'img/avatars/user02.png', 'img/avatars/user03.png', 'img/avatars/user04.png', 'img/avatars/user05.png', 'img/avatars/user06.png', 'img/avatars/user07.png', 'img/avatars/user08.png'],
   TITLES: ['двушка в центре', 'вилла с бассейном', 'однокомнатная квартира рядом с метро', 'стильный лофт 18+', 'семейные аппартаменты'],
   TYPES: ['palace', 'flat', 'house', 'bungalo'],
   TIMES: ['12:00', '13:00', '14:00'],
@@ -27,6 +26,10 @@ var yCoord = {
   MIN: 130,
   MAX: 630
 };
+var pinParms = {
+  WIDTH: 50,
+  HEIGHT: 70
+};
 var MAX_PRICE = 10000000;
 var ROOM_AMOUNT = 10;
 var GUEST_AMOUNT = 10;
@@ -34,11 +37,11 @@ var GUEST_AMOUNT = 10;
 var generateAdvertisements = function (advertisementAmount) {
   var advertisements = [];
   for (var i = 0; i < advertisementAmount; i++) {
-    var coordX = getRandomNumber(xCoord.MIN, xCoord.MAX) + 25;
-    var coordY = getRandomNumber(yCoord.MIN, yCoord.MAX) + 70;
+    var coordX = getRandomNumber(xCoord.MIN, xCoord.MAX);
+    var coordY = getRandomNumber(yCoord.MIN, yCoord.MAX);
     advertisements[i] = {
       author: {
-        avatar: getRandomElement(advertisementParms.AVATARS)
+        avatar: 'img/avatars/user0' + (i + 1) + '.png'
       },
       offer: {
         title: getRandomElement(advertisementParms.TITLES),
@@ -74,8 +77,8 @@ var renderPins = function () {
   var adverts = generateAdvertisements(AMOUNT);
   adverts.forEach(function (advert) {
     var newPin = similarPinTemplate.cloneNode(true);
-    newPin.style.left = advert.location.x + 'px';
-    newPin.style.top = advert.location.y + 'px';
+    newPin.style.left = advert.location.x + pinParms.WIDTH / 2 + 'px';
+    newPin.style.top = advert.location.y + pinParms.HEIGHT + 'px';
     newPin.querySelector('img').src = advert.author.avatar;
     newPin.querySelector('img').alt = advert.offer.description;
     fragment.appendChild(newPin);
