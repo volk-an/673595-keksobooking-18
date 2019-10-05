@@ -77,8 +77,8 @@ var renderPins = function () {
   var adverts = generateAdvertisements(AMOUNT);
   adverts.forEach(function (advert) {
     var newPin = similarPinTemplate.cloneNode(true);
-    newPin.style.left = advert.location.x + pinParms.WIDTH / 2 + 'px';
-    newPin.style.top = advert.location.y + pinParms.HEIGHT + 'px';
+    newPin.style.left = advert.location.x - pinParms.WIDTH / 2 + 'px';
+    newPin.style.top = advert.location.y - pinParms.HEIGHT + 'px';
     newPin.querySelector('img').src = advert.author.avatar;
     newPin.querySelector('img').alt = advert.offer.description;
     fragment.appendChild(newPin);
