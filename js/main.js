@@ -65,8 +65,8 @@ var generateAdvertisements = function (advertisementAmount) {
   return advertisements;
 };
 //  активируем карту
-var map = document.querySelector('.map');
-//map.classList.remove('map--faded');
+// var map = document.querySelector('.map');
+// map.classList.remove('map--faded');
 //  определяем, куда вставлять новые пины
 var similarAdvertList = document.querySelector('.map__pins');
 //  определяем шаблон для пина
@@ -85,9 +85,9 @@ var renderPins = function () {
   });
   similarAdvertList.appendChild(fragment);
 };
-//renderPins();
-var advertForm =  document.querySelector('.ad-form');
-/*var fileInput = advertForm.querySelector('#avatar');
+renderPins();
+var advertForm = document.querySelector('.ad-form');
+/* var fileInput = advertForm.querySelector('#avatar');
 var titleInput = advertForm.querySelector('#title');
 var addressInput = advertForm.querySelector('#address');
 var typeSelect = advertForm.querySelector('#type');
@@ -125,7 +125,7 @@ var mainPin = document.querySelector('.map__pin--main');
 var ENTER_KEYCODE = 13;
 var notActivePinParms = {
   WIDTH: 65,
-  HEIGHT:65
+  HEIGHT: 65
 };
 var notActivePinPcoords = {
   COORDX: 570,
@@ -134,31 +134,36 @@ var notActivePinPcoords = {
 var notActivePinLocation = {
   X: notActivePinPcoords.COORDX + notActivePinParms.WIDTH,
   Y: notActivePinPcoords.COORDY + notActivePinParms.HEIGHT
-}
+};
 var addressInput = advertForm.querySelector('#address');
 addressInput.value = notActivePinLocation;
 for (var i = 0; i < inputs.length; i++) {
-  inputs[i].setAttribute("disabled", "disabled")};
-for (var i = 0; i<selects.length; i++) {
-    selects[i].setAttribute("disabled", "disabled")};
-for (var i = 0; i < textareas.length; i++) {
-  textareas[i].setAttribute("disabled", "disabled")};
-submitButton.setAttribute("disabled", "disabled");
-var pageActivation = function() {
+  inputs[i].setAttribute('disabled', 'disabled');
+}
+for (var j = 0; j < selects.length; j++) {
+  selects[j].setAttribute('disabled', 'disabled');
+}
+for (var k = 0; k < textareas.length; k++) {
+  textareas[k].setAttribute('disabled', 'disabled');
+}
+submitButton.setAttribute('disabled', 'disabled');
+var pageActivation = function () {
   for (var i = 0; i < inputs.length; i++) {
-    inputs[i].removeAttribute("disabled", "disabled")};
-  for (var i = 0; i<selects.length; i++) {
-      selects[i].removeAttribute("disabled", "disabled")};
-  for (var i = 0; i < textareas.length; i++) {
-    textareas[i].removeAttribute("disabled", "disabled")};
-  submitButton.removeAttribute("disabled", "disabled");
+    inputs[i].removeAttribute('disabled', 'disabled');
+  }
+  for (var j = 0; j < selects.length; j++) {
+    selects[j].removeAttribute('disabled', 'disabled');
+  }
+  for (var k = 0; k < textareas.length; k++) {
+    textareas[k].removeAttribute('disabled', 'disabled');
+  }
+  submitButton.removeAttribute('disabled', 'disabled');
 };
-mainPin.addEventListener('mousedown', function (evt) {
-  console.log('клик');
+mainPin.addEventListener('mousedown', function () {
   pageActivation();
 });
 mainPin.addEventListener('keydown', function (evt) {
   if (evt.keyCode === ENTER_KEYCODE) {
-    console.log('клик');
-  pageActivation();
-  }});
+    pageActivation();
+  }
+});
