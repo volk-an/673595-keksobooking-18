@@ -66,7 +66,7 @@ var generateAdvertisements = function (advertisementAmount) {
 };
 //  активируем карту
 var map = document.querySelector('.map');
-map.classList.remove('map--faded');
+//map.classList.remove('map--faded');
 //  определяем, куда вставлять новые пины
 var similarAdvertList = document.querySelector('.map__pins');
 //  определяем шаблон для пина
@@ -85,4 +85,80 @@ var renderPins = function () {
   });
   similarAdvertList.appendChild(fragment);
 };
-renderPins();
+//renderPins();
+var advertForm =  document.querySelector('.ad-form');
+/*var fileInput = advertForm.querySelector('#avatar');
+var titleInput = advertForm.querySelector('#title');
+var addressInput = advertForm.querySelector('#address');
+var typeSelect = advertForm.querySelector('#type');
+var priceInput = advertForm.querySelector('#price');
+var timeinSelect = advertForm.querySelector('#timein');
+var timeoutSelect = advertForm.querySelector('#timeout');
+var roomNumberSelect = advertForm.querySelector('#room_number');
+var capacitySelect = advertForm.querySelector('#capacity');
+var featuresFildset = advertForm.querySelector('.features');
+var descriptionTextarea = advertForm.querySelector('#description');
+var imagesInput = advertForm.querySelector('#images');
+var submitButton = advertForm.querySelector('.ad-form__submit');
+var mainPin = document.querySelector('.map__pin--main');
+var pageActivation = function(){};
+
+fileInput.setAttribute("disabled", "disabled");
+titleInput.setAttribute("disabled", "disabled");
+addressInput.setAttribute("disabled", "disabled");
+typeSelect.setAttribute("disabled", "disabled");
+priceInput.setAttribute("disabled", "disabled");
+timeinSelect.setAttribute("disabled", "disabled");
+timeoutSelect.setAttribute("disabled", "disabled");
+roomNumberSelect.setAttribute("disabled", "disabled");
+capacitySelect.setAttribute("disabled", "disabled");
+featuresFildset.setAttribute("disabled", "disabled");
+descriptionTextarea.setAttribute("disabled", "disabled");
+imagesInput.setAttribute("disabled", "disabled");
+submitButton.setAttribute("disabled", "disabled");
+*/
+var inputs = advertForm.querySelectorAll('input');
+var selects = advertForm.querySelectorAll('select');
+var textareas = advertForm.querySelectorAll('textarea');
+var submitButton = advertForm.querySelector('.ad-form__submit');
+var mainPin = document.querySelector('.map__pin--main');
+var ENTER_KEYCODE = 13;
+var notActivePinParms = {
+  WIDTH: 65,
+  HEIGHT:65
+};
+var notActivePinPcoords = {
+  COORDX: 570,
+  COORDY: 370
+};
+var notActivePinLocation = {
+  X: notActivePinPcoords.COORDX + notActivePinParms.WIDTH,
+  Y: notActivePinPcoords.COORDY + notActivePinParms.HEIGHT
+}
+var addressInput = advertForm.querySelector('#address');
+addressInput.value = notActivePinLocation;
+for (var i = 0; i < inputs.length; i++) {
+  inputs[i].setAttribute("disabled", "disabled")};
+for (var i = 0; i<selects.length; i++) {
+    selects[i].setAttribute("disabled", "disabled")};
+for (var i = 0; i < textareas.length; i++) {
+  textareas[i].setAttribute("disabled", "disabled")};
+submitButton.setAttribute("disabled", "disabled");
+var pageActivation = function() {
+  for (var i = 0; i < inputs.length; i++) {
+    inputs[i].removeAttribute("disabled", "disabled")};
+  for (var i = 0; i<selects.length; i++) {
+      selects[i].removeAttribute("disabled", "disabled")};
+  for (var i = 0; i < textareas.length; i++) {
+    textareas[i].removeAttribute("disabled", "disabled")};
+  submitButton.removeAttribute("disabled", "disabled");
+};
+mainPin.addEventListener('mousedown', function (evt) {
+  console.log('клик');
+  pageActivation();
+});
+mainPin.addEventListener('keydown', function (evt) {
+  if (evt.keyCode === ENTER_KEYCODE) {
+    console.log('клик');
+  pageActivation();
+  }});
