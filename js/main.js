@@ -93,7 +93,8 @@ var map = document.querySelector('.map');
 var ENTER_KEYCODE = 13;
 var pinParams = {
   WIDTH: 65,
-  START_HEIGHT: 65
+  START_HEIGHT: 65,
+  HEIGHT: 87
 };
 var startCoords = {
   COORDX: 570,
@@ -102,6 +103,10 @@ var startCoords = {
 var startLocation = {
   X: Math.round(startCoords.COORDX + pinParams.WIDTH / 2),
   Y: Math.round(startCoords.COORDY + pinParams.START_HEIGHT / 2)
+};
+var startLocationActive = {
+  X: Math.round(startCoords.COORDX + pinParams.WIDTH / 2),
+  Y: Math.round(startCoords.COORDY + pinParams.HEIGHT / 2)
 };
 var addressInput = advertForm.querySelector('#address');
 var setDisabled = function (element) {
@@ -116,6 +121,7 @@ var pageActivation = function () {
   }
   map.classList.remove('map--faded');
   advertForm.classList.remove('ad-form--disabled');
+  setLocation(startLocationActive);
 };
 var setLocation = function (location) {
   addressInput.value = [location.X, location.Y];
