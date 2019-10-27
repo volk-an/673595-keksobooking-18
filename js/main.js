@@ -91,6 +91,20 @@ var fieldsets = advertForm.querySelectorAll('fieldset');
 var mainPin = document.querySelector('.map__pin--main');
 var map = document.querySelector('.map');
 var ENTER_KEYCODE = 13;
+var pinParams = {
+ WIDTH: 65,
+ HEIGHT: 81,
+ START_HEIGHT: 65
+};
+var startCoords = {
+  COORDX: 570,
+  COORDY: 370
+};
+var startLocation = {
+  X: startCoords.COORDX + pinParms.WIDTH,
+  Y: startCoords.COORDY + pinParms.START_HEIGHT
+}
+var addressInput = advertForm.querySelector('#address');
 var setDisabled = function (element) {
   element.setAttribute('disabled', 'disabled');
 };
@@ -104,6 +118,10 @@ var pageActivation = function () {
   map.classList.remove('map--faded');
   advertForm.classList.remove('ad-form--disabled');
 };
+var setLocation = function (location) {
+  addressInput.value = location.X;
+}
+setLocation(startLocation.X);
 for (var i = 0; i < fieldsets.length; i++) {
   setDisabled(fieldsets[i]);
 }
